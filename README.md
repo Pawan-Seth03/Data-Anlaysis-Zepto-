@@ -1,11 +1,12 @@
 # Data-Anlaysis-Zepto-
-This project has insights into zepto sales by using SQL. The data is taken from Kaggle.
+This project has insights into zepto sales by using SQL. Solved 20 business problems which help to improve the company and make it profitable.  The data is taken from Kaggle.
+Click here for dataset [https://www.kaggle.com/datasets/devshahoff/zepto-dataset]
 To make this data more understandable we made dash board.
 
 
 #Data Creation, Exploration and Cleaning
 --
-
+```sql
 drop table if exists zepto;
 
 create table zepto (
@@ -19,9 +20,9 @@ discountedSellingPrice NUMERIC(8,2),
 weightInGms INTEGER,
 outOfStock BOOLEAN,	
 quantity INTEGER);
-
+```
 --data exploration
-
+```sql
 --count of rows
 select count(*) from zepto;
 
@@ -65,9 +66,9 @@ FROM zepto
 GROUP BY name
 HAVING count(sku_id) > 1
 ORDER BY count(sku_id) DESC;
-
---data cleaning
-
+```
+--data cleaning and updating
+```sql
 --products with price = 0
 SELECT * FROM zepto
 WHERE mrp = 0 OR discountedSellingPrice = 0;
@@ -80,7 +81,7 @@ WHERE mrp = 0;
 UPDATE zepto
 SET mrp = mrp / 100.0,
 discountedSellingPrice = discountedSellingPrice / 100.0;
-
+```
 SELECT mrp, discountedSellingPrice FROM zepto;
 
 
